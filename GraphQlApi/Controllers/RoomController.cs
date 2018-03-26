@@ -29,19 +29,19 @@ namespace GraphQlApi.Controllers
         // POST: api/Room
         public Room Post([FromBody]Room room)
         {
-            return _roomRepo.AddRoom(room);
+            return _roomRepo.Add(room);
         }
 
         // PUT: api/Room/5
         public Room Put(int id, [FromBody]Room room)
         {
-            return _roomRepo.UpdateRoom(room);
+            return _roomRepo.Update(room);
         }
 
         // DELETE: api/Room/5
         public void Delete(int id)
         {
-            _roomRepo.DeleteRoom(id);
+            _roomRepo.Delete(id);
         }
     }
 }

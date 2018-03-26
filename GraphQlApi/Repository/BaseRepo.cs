@@ -8,6 +8,9 @@ namespace GraphQlApi.Repository
     {
         T GetById(int id);
         IList<T> GetAll();
+        T Update(T value);
+        T Add(T value);
+        void Delete(int id);
     }
 
     public class RoomRepo : IBaseRepo<Room>
@@ -29,14 +32,14 @@ namespace GraphQlApi.Repository
             return _rooms;
         }
 
-        public Room UpdateRoom(Room room)
+        public Room Update(Room room)
         {
             var roomToUpdate = _rooms.Single(r => r.Id == room.Id);
             roomToUpdate.RoomName = room.RoomName;
             return roomToUpdate;
         }
 
-        public Room AddRoom(Room room)
+        public Room Add(Room room)
         {
             var id = _rooms.OrderByDescending(r => r.Id).First().Id;
             room.Id = id + 1;
@@ -44,7 +47,7 @@ namespace GraphQlApi.Repository
             return room;
         }
 
-        public void DeleteRoom(int id)
+        public void Delete(int id)
         {
             var roomToRemove = _rooms.First(r => r.Id == id);
             _rooms.Remove(roomToRemove);
